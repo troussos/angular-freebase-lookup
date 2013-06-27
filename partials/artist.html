@@ -9,6 +9,7 @@
     <div style="line-height:150%">
         <span data-ng-repeat="genre in artist.genre">&nbsp;<span class="round label">{{ genre }}</span>&nbsp;</span>
     </div><br>
+
     <table class="large-12">
         <thead>
             <tr>
@@ -19,9 +20,9 @@
                     Album Name<br>
                 </th>
                 <th>
-                    <a data-ng-click="flipSort('release_year')">
-                        <i data-ng-hide="sortOrder == '-release_year'" class="icon-chevron-up"></i>
-                        <i data-ng-hide="sortOrder == 'release_year'" class="icon-chevron-down"></i>
+                    <a data-ng-click="flipSort('release_date')">
+                        <i data-ng-hide="sortOrder == '-release_date'" class="icon-chevron-up"></i>
+                        <i data-ng-hide="sortOrder == 'release_date'" class="icon-chevron-down"></i>
                     </a>
                     Release Year<br>
                 </th>

@@ -17,9 +17,9 @@ app.factory('lookupFactory', function(freebaseService){
             });
     }
 
-    factory.getAlbumInfo = function(album){
+    factory.getAlbumList = function(artist, album){
         return freebaseService.lookup(
-                [{'*': null, 'name': album, 'type': '/music/album'}]).
+                [{'*': null, 'name': album, 'artist': artist, 'type': '/music/album'}]).
             then(function(promise) {
                 return promise;
             });
@@ -27,7 +27,3 @@ app.factory('lookupFactory', function(freebaseService){
 
     return factory;
 })
-
-callback = function(data){
-    console.log(data);
-}

@@ -1,1 +1,21 @@
-<h3>ARTIST VIEW</h3>
+<div class="panel">
+    <h3>Results for: {{ artistName }}</h3>
+
+    <div data-ng-show="lookupError" data-alert class="alert-box alert text-center">
+        {{ errorMessage }}
+    </div>
+
+    {{ artist.origin[0] }}
+
+    <ul>
+        <li data-ng-repeat="genre in artist.genre">{{ genre }}</li>
+    </ul>
+
+    <ul>
+        <li data-ng-repeat="label in artist.label">{{ label }}</li>
+    </ul>
+
+    <ul>
+        <li data-ng-repeat="album in artist.album track by $index">{{ album }}</li>
+    </ul>
+</div>

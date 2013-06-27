@@ -13,23 +13,28 @@
         <thead>
             <tr>
                 <th>
-                    <a href=""><i class="icon-chevron-up"></i></a>
-                    <a href=""><i class="icon-chevron-down"></i></a>
+                    <a data-ng-click="flipSort('name')">
+                        <i data-ng-hide="sortOrder == '-name'" class="icon-chevron-up"></i>
+                        <i data-ng-hide="sortOrder == 'name'" class="icon-chevron-down"></i></a>
                     Album Name<br>
                 </th>
                 <th>
-                    <a href=""><i class="icon-chevron-up"></i></a>
-                    <a href=""><i class="icon-chevron-down"></i></a>
+                    <a data-ng-click="flipSort('release_year')">
+                        <i data-ng-hide="sortOrder == '-release_year'" class="icon-chevron-up"></i>
+                        <i data-ng-hide="sortOrder == 'release_year'" class="icon-chevron-down"></i>
+                    </a>
                     Release Year<br>
                 </th>
                 <th>
-                    <a href=""><i class="icon-chevron-up"></i></a>
-                    <a href=""><i class="icon-chevron-down"></i></a>
+                    <a data-ng-click="flipSort('release_type')">
+                        <i data-ng-hide="sortOrder == '-release_type'" class="icon-chevron-up"></i>
+                        <i data-ng-hide="sortOrder == 'release_type'" class="icon-chevron-down"></i>
+                    </a>
                     Release Type<br>
                 </th>
             </tr>
         </thead>
-        <tr data-ng-repeat="album in albums |orderBy:sortorder">
+        <tr data-ng-repeat="album in albums |orderBy:sortOrder">
             <td>{{ album.name }}</td>
             <td>{{ album.release_date }}</td>
             <td>{{ album.release_type }}</td>

@@ -7,10 +7,16 @@
  */
 app.controller('artistController', function($scope, $route, lookupFactory){
     $scope.artistName = $route.current.params.artistName;
+    $scope.albums = [];
     lookupFactory.getArtistInfo($route.current.params.artistName).then(function(promise){
         if(promise.data.result[0]){
             $scope.artist = promise.data.result[0];
-            console.log(promise.data.result[0]);
+            angular.forEach(promise.data.result[0].album, function(value, key){
+               lookupFactory.getAlbumList($route.current.params.artistName, value)
+                   .then(function(promise){
+                       $scope.albums.push(promise.data.result[0]);;
+                });
+            });
         }
         else{
             $scope.lookupError = true;

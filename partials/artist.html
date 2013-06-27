@@ -1,21 +1,38 @@
+<a href="/#/" class="button success expand">Lookup Another Artist</a>
 <div class="panel">
     <h3>Results for: {{ artistName }}</h3>
 
     <div data-ng-show="lookupError" data-alert class="alert-box alert text-center">
         {{ errorMessage }}
     </div>
-
-    {{ artist.origin[0] }}
-
-    <ul>
-        <li data-ng-repeat="genre in artist.genre">{{ genre }}</li>
-    </ul>
-
-    <ul>
-        <li data-ng-repeat="label in artist.label">{{ label }}</li>
-    </ul>
-
-    <ul>
-        <li data-ng-repeat="album in artist.album track by $index">{{ album }}</li>
-    </ul>
+    Originally From: {{ artist.origin[0] }}<br/><br/>
+    <div style="line-height:150%">
+        <span data-ng-repeat="genre in artist.genre">&nbsp;<span class="round label">{{ genre }}</span>&nbsp;</span>
+    </div><br>
+    <table class="large-12">
+        <thead>
+            <tr>
+                <th>
+                    <a href=""><i class="icon-chevron-up"></i></a>
+                    <a href=""><i class="icon-chevron-down"></i></a>
+                    Album Name<br>
+                </th>
+                <th>
+                    <a href=""><i class="icon-chevron-up"></i></a>
+                    <a href=""><i class="icon-chevron-down"></i></a>
+                    Release Year<br>
+                </th>
+                <th>
+                    <a href=""><i class="icon-chevron-up"></i></a>
+                    <a href=""><i class="icon-chevron-down"></i></a>
+                    Release Type<br>
+                </th>
+            </tr>
+        </thead>
+        <tr data-ng-repeat="album in albums |orderBy:sortorder">
+            <td>{{ album.name }}</td>
+            <td>{{ album.release_date }}</td>
+            <td>{{ album.release_type }}</td>
+        </tr>
+    </table>
 </div>

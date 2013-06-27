@@ -7,11 +7,17 @@
  */
 app.service('freebaseService',function($http){
 
-    var service_url = 'https://www.googleapis.com/freebase/v1/mqlread';
+    //Your API Key from Google goes here
+    var apiKey = '';
+    var serviceUrl = 'https://www.googleapis.com/freebase/v1/mqlread';
+
+    if(apiKey){
+        apiKey = 'key=' + apiKey + '&';
+    }
 
     this.lookup = function(query, successCallback){
         return $http.jsonp(
-                service_url + '?callback=JSON_CALLBACK&query=' + JSON.stringify(query)).
+                serviceUrl + '?' + apiKey + 'callback=JSON_CALLBACK&query=' + JSON.stringify(query)).
             success(function(data, status, headers, config){
                 return data;
                 }).

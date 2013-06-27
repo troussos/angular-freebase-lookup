@@ -6,14 +6,15 @@
  * To change this template use File | Settings | File Templates.
  */
 app.controller('artistController', function($scope, $route, lookupFactory){
+    $scope.artistName = $route.current.params.artistName;
     lookupFactory.getArtistInfo($route.current.params.artistName).then(function(promise){
         if(promise.data.result[0]){
-            //Do stuff here to update the view
+            $scope.artist = promise.data.result[0];
             console.log(promise.data.result[0]);
         }
         else{
-            //Output an error message to the view here
-            console.error("No Data");
+            $scope.lookupError = true;
+            $scope.errorMessage = "Could Not Find Artist";
         }
 
     });

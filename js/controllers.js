@@ -15,7 +15,7 @@ app.controller('artistController', function($scope, $route, lookupFactory){
             angular.forEach(promise.data.result[0].album, function(value, key){
                lookupFactory.getAlbumList($route.current.params.artistName, value)
                    .then(function(promise){
-                       $scope.albums.push(promise.data.result[0]);;
+                       $scope.albums.push(promise.data.result[0]);
                 });
             });
         }
